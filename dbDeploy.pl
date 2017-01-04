@@ -73,6 +73,7 @@ use Date::Manip;
 
 our $DoDebug = 0;
 $| = 1;
+$Data::Dumper::Indent = 1;
 
 #-------------------------------------------------------------------------------
 # Main
@@ -101,7 +102,7 @@ $| = 1;
 # - Commit the database transaction, and report the results.
 #-------------------------------------------------------------------------------
 my $doUsage = 0;
-my( $err, $srcConn, $tgtConn, $srcDb, $tgtDb, $dbh, $nRecs, $msg );
+my( $err, $ret, $srcConn, $tgtConn, $srcDb, $tgtDb, $dbh, $nRecs, $msg );
 my( $runType, $uKey, $lDir );
 my $updRef = {};
 my $insRef = {};
@@ -205,7 +206,10 @@ if ( ! $err && $doRestore )
 unless ( $err )
 {
     $nRecs = keys( %{$updRef} );
-    $msg = sprintf( "\n%d record%s found to update, ", $nRecs,
+    my $connFmt = ($doRestore) ? "\nTarget = %s\n" 
+        : "\nSource = %s, Target = %s\n";
+    $msg = sprintf( $connFmt, $data->{source_conn}, $data->{target_conn} );
+    $msg .= sprintf( "\n%d record%s found to update, ", $nRecs,
                     ($nRecs == 1) ? ' was' : 's were' );
     if ( $doRestore )
     {
@@ -220,7 +224,21 @@ unless ( $err )
     $msg .= sprintf( "%d record%s found to %s\nDo want to continue? ", 
                 $nRecs, ($nRecs == 1) ? ' was' : 's were', $runType );
 
-    unless ( askToContinue($msg) )
+    $ret = askToContinue( $msg );
+    if ( $ret == 2 )
+    {
+        printf( "Update List\n[%s]\n", Dumper($updRef) );
+        if ( $doRestore )
+        {
+            printf( "\nDelete List\n[%s]\n", Dumper($delKeys) );
+        }
+        else
+        {
+            printf( "\nInsert List\n[%s]\n", Dumper($insRef) );
+        }
+        exit( 1 );
+    }
+    elsif ( $ret == 0 )
     {
         printf( "Ok. Deployment to %s was aborted.\n", $data->{target_conn} );
         exit( 1 );
@@ -454,6 +472,7 @@ sub getDbData
 #
 # Return
 #   1 = do continue
+#   2 = show lists and exit
 #
 sub askToContinue
 {
@@ -461,7 +480,7 @@ sub askToContinue
     my $ret = 0;
     my $ans;
     open( STDIN, "-" );
-    print $msg . "y|n ";
+    print $msg . "y|n|l ";
 
     while( <STDIN> )
     {
@@ -474,6 +493,11 @@ sub askToContinue
         }
         elsif ( $ans =~ /^n/i )
         {
+            last;
+        }
+        elsif ( $ans =~ /^l/i )
+        {
+            $ret = 2;
             last;
         }
         else
@@ -544,7 +568,6 @@ sub storeDeployLog
             printf( $fp "# dbDeploy Restore File (original = %s)\n",
                     $file );
 
-            $Data::Dumper::Indent = 1;
             printf( $fp "%s\n", Dumper($fileRef) );
             close( $fp );
         }
@@ -625,6 +648,10 @@ sub doDbUpdates
                 if ( defined($uRef->{$ky}{$uType}{$colNm}) )
                 {
                     push( @vals, $uRef->{$ky}{$uType}{$colNm} );
+                }
+                else
+                {
+                    push( @vals, undef() );
                 }
             }
 
