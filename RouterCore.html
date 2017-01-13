@@ -1,0 +1,615 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:root@osx219.apple.com" />
+</head>
+
+<body style="background-color: white">
+
+
+
+<ul id="index">
+  <li><a href="#NAME---SITO::Queue::RouterCore">NAME - SITO::Queue::RouterCore</a></li>
+  <li><a href="#ABSTRACT">ABSTRACT</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#PUBLIC-METHODS">PUBLIC METHODS</a>
+    <ul>
+      <li><a href="#new-ARGS---Create-a-new-instance-of-RouterCore">new($ARGS) - Create a new instance of RouterCore</a>
+        <ul>
+          <li><a href="#Optional-Arguments">Optional Arguments</a></li>
+          <li><a href="#Return-Value">Return Value</a></li>
+        </ul>
+      </li>
+      <li><a href="#publishStart-ARGS---Publish-Start-of-Queue-Router-flow">publishStart($ARGS) - Publish Start of Queue Router flow</a>
+        <ul>
+          <li><a href="#Mandatory-Arguments">Mandatory Arguments</a></li>
+          <li><a href="#Optional-Arguments1">Optional Arguments</a></li>
+          <li><a href="#Return-Value1">Return Value</a></li>
+        </ul>
+      </li>
+      <li><a href="#setMessageData-ARGS---Set-Message-Data">setMessageData($ARGS) - Set Message Data</a>
+        <ul>
+          <li><a href="#Mandatory-Arguments1">Mandatory Arguments</a></li>
+          <li><a href="#Return-Value2">Return Value</a></li>
+        </ul>
+      </li>
+      <li><a href="#publishNext-ARGS---Publish-Next-Class-in-Queue-Router-flow">publishNext($ARGS) - Publish Next Class in Queue Router flow</a>
+        <ul>
+          <li><a href="#Optional-Arguments2">Optional Arguments</a></li>
+          <li><a href="#Return-Value3">Return Value</a></li>
+        </ul>
+      </li>
+      <li><a href="#publishNotify-ARGS---Publish-to-Queue-Router-Class-queue">publishNotify($ARGS) - Publish to Queue Router Class queue</a>
+        <ul>
+          <li><a href="#Mandatory-Arguments2">Mandatory Arguments</a></li>
+          <li><a href="#Return-Value4">Return Value</a></li>
+        </ul>
+      </li>
+      <li><a href="#publishAbort-ARGS---Publish-to-the-Abort-Route">publishAbort($ARGS) - Publish to the Abort Route</a>
+        <ul>
+          <li><a href="#Mandatory-Arguments3">Mandatory Arguments</a></li>
+          <li><a href="#Optional-Arguments3">Optional Arguments</a></li>
+          <li><a href="#Return-Value5">Return Value</a></li>
+        </ul>
+      </li>
+      <li><a href="#setBranchClass-ARGS---Set-a-Branch-Class">setBranchClass($ARGS) - Set a Branch Class</a>
+        <ul>
+          <li><a href="#Mandatory-Arguments4">Mandatory Arguments</a></li>
+          <li><a href="#Optional-Arguments4">Optional Arguments</a></li>
+          <li><a href="#Return-Value6">Return Value</a></li>
+        </ul>
+      </li>
+      <li><a href="#listExchangeClasses-ARGS---List-Queue-and-Exchange-Classes-with-settings">listExchangeClasses($ARGS) - List Queue and Exchange Classes with settings</a>
+        <ul>
+          <li><a href="#Mandatory-Arguments5">Mandatory Arguments</a></li>
+          <li><a href="#Return-Value7">Return Value</a></li>
+        </ul>
+      </li>
+      <li><a href="#getQueue-ARGS---Get-Queue-and-Exchange-names">getQueue($ARGS) - Get Queue and Exchange names</a>
+        <ul>
+          <li><a href="#Mandatory-Arguments6">Mandatory Arguments</a></li>
+          <li><a href="#Return-Value8">Return Value</a></li>
+        </ul>
+      </li>
+      <li><a href="#getNextClass-ARGS---Get-the-Next-Class-in-the-Process-List">getNextClass($ARGS) - Get the Next Class in the Process List</a>
+        <ul>
+          <li><a href="#Optional-Arguments5">Optional Arguments</a></li>
+          <li><a href="#Return-Value9">Return Value</a></li>
+        </ul>
+      </li>
+      <li><a href="#consumeClasses-ARGS---Consume-Records-from-Class-Queues">consumeClasses($ARGS) - Consume Records from Class Queues</a>
+        <ul>
+          <li><a href="#Mandatory-Arguments7">Mandatory Arguments</a></li>
+          <li><a href="#Optional-Arguments6">Optional Arguments</a></li>
+          <li><a href="#Return-Value10">Return Value</a></li>
+        </ul>
+      </li>
+      <li><a href="#getMessageData-ARGS---Get-Message-Data">getMessageData($ARGS) - Get Message Data</a>
+        <ul>
+          <li><a href="#Optional-Arguments7">Optional Arguments</a></li>
+          <li><a href="#Return-Value11">Return Value</a></li>
+        </ul>
+      </li>
+      <li><a href="#publishDBwRequest-ARGS---Publish-DB-Updates-with-Request-Transaction">publishDBwRequest($ARGS) - Publish DB Updates with Request Transaction</a>
+        <ul>
+          <li><a href="#Mandatory-Arguments8">Mandatory Arguments</a></li>
+          <li><a href="#Optional-Arguments8">Optional Arguments</a></li>
+          <li><a href="#Return-Value12">Return Value</a></li>
+        </ul>
+      </li>
+      <li><a href="#consumeCallback-ARGS---Consume-Callback-Stub">consumeCallback($ARGS) - Consume Callback Stub</a>
+        <ul>
+          <li><a href="#Optional-Arguments9">Optional Arguments</a></li>
+          <li><a href="#Return-Value13">Return Value</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#DEPENDENCIES">DEPENDENCIES</a></li>
+  <li><a href="#AUTHOR">AUTHOR</a></li>
+  <li><a href="#VERSION">VERSION</a></li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+</ul>
+
+<h1 id="NAME---SITO::Queue::RouterCore">NAME - SITO::Queue::RouterCore</h1>
+
+<p><b>RouterCore</b> - SITO Queue Router Core</p>
+
+<h1 id="ABSTRACT">ABSTRACT</h1>
+
+<p>SITO::Queue::RouterCore defines methods to support the queue processing of client or function specific data flow to direct message delivery.</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code>    use SITO::Queue::RouterCore
+    my $rcOb = SITO::Queue::RouterCore-&gt;new( class_data =&gt; $classRef );
+    die &quot;$rcOb-&gt;{error}\n&quot;  if ( $rcOb-&gt;{error} );
+
+    # Publish the specified class.
+    $ret = $rcOb-&gt;publishStart( cargo =&gt; $data );
+    $err = $ret-&gt;Get_error();
+    die &quot;publishStart failed: $err\n&quot;  if ( $err );
+
+    # Consume records of queues belonging to all current classes.
+    $ret = $rcOb-&gt;consume();
+
+    # Consume records of just the specified class.
+    $ret = $rcOb-&gt;consume( class_name =&gt; $classNm );
+    $err = $ret-&gt;Get_error();
+    die &quot;Consume failed: $err\n&quot;  if ( $err );</code></pre>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>The <b>RouterCore</b> module provides the core structure and methods for RabbitMQ queue router processing used mainly in message delivery processing. It supports router classes that enable specialized processing for Single Touch client messaging to allow for current and future messaging requirements. Each router class is named after the function to perform or message type to process, and has its own Perl module that is loaded by RouterCore to define how to publish to and consume from the associated queue. Future expansion to new messaging opportunities can be accomplished by designing and building new class libraries that support new queues for processing.</p>
+
+<h1 id="PUBLIC-METHODS">PUBLIC METHODS</h1>
+
+<p><b>_____________________________________________________________________________</b></p>
+
+<h2 id="new-ARGS---Create-a-new-instance-of-RouterCore">new($ARGS) - Create a new instance of RouterCore</h2>
+
+<p>Create and initialize a new <b>RouterCore</b> object to hold a data cargo and settings necesary to process any supported class of message to deliver. The settings are initialized once message class and cargo have been specified with the <b>publishStart</b> method. Both are combined to form a message packet called <b>msgData</b> that directs processing and follows the message through to delivery. The settings are used by the consumers of the Start Queue and subsequent queues to direct processing to the next queue down the process route.</p>
+
+<p>Any new class can be added to <b>RouterCore</b> by creating a Perl module in the Queue/lib directory named exactly the same as that class minus &#39;.pm&#39;. For example, the Walmart SOAP class is class is defined by the Queue/lib/Wmt_soap.pm Perl module. All class modules must export the following callback routine:</p>
+
+<pre><code>    consumeCallback   : Callback routine to pass to the Consumer_poll method.</code></pre>
+
+<p>Once the class library file has been added, attributes for that class need to be added to the sito_global.config and config_tags database tables to allow its use with <b>RouterCore</b>. The database entries for a class must contain all the elements necessary to defined the processing of that class. See the <b>start</b> class for an example of what attribute tags to define.</p>
+
+<h3 id="Optional-Arguments">Optional Arguments</h3>
+
+<ul>
+
+<li><p>$ARGS-&gt;{<b>dbObj</b>} : Database connection to use when database access is necessary. If not supplied, a connection will be opened using the default connection parameters derived from the current server environment.</p>
+
+</li>
+<li><p>$ARGS-&gt;{<b>logFp</b>} : Pointer to an open, writable log file. If not supplied, STDERR is used anytime a print statement is issued in the module.</p>
+
+</li>
+<li><p>$ARGS-&gt;{<b>amqp_connection</b>} : Optional connection string for AMQP (RabbitMQ) connection. Look in /shared/SITO/conf AMQP.conf on the mo_processor host for available connection strings.</p>
+
+</li>
+<li><p>$ARGS-&gt;{<b>debug</b>} : Set this flag to 1 if you want debug statements to print to the out to the <b>logFp</b> (default is STDERR).</p>
+
+</li>
+<li><p>$ARGS-&gt;{<b>max_consume</b>} : Maximum number of records to consume before halting queue consumption of any given class. This should only be used when running in Debug mode because the Consumer_poll process will be taken abrubtly off line when the consume count has been reached, and one must exit the calling program to clean up orphaned channels left behind.</p>
+
+</li>
+</ul>
+
+<h3 id="Return-Value">Return Value</h3>
+
+<p><b>SITO::Queue::RouterCore</b> object pointer</p>
+
+<p><b>_____________________________________________________________________________</b></p>
+
+<h2 id="publishStart-ARGS---Publish-Start-of-Queue-Router-flow">publishStart($ARGS) - Publish Start of Queue Router flow</h2>
+
+<p>Publish the named class and cargo data to the Router Start queue to begin processing the message packet. This starts the Queue Router processing flow by loading class specific configuration settings that the router uses to direct the message processing. The router uses the settings to keep track of the processing history and the process route to know where to publish with the next call to <b>publishNext</b>. This method must be called to begin queue processing.</p>
+
+<p>Only work class names can be specified with this method. The configuration settings for this method are stored in the RouterCore object when <b>new</b> is called, and an error will result if no settings are found for the named work class.</p>
+
+<h3 id="Mandatory-Arguments">Mandatory Arguments</h3>
+
+<ul>
+
+<li><p>$ARGS-&gt;{<b>class_name</b>} : The class name of the data to publish. This name must exist in the class data and in the class configuration tags found in the SITO::Config database to avoid error. This name tells the router what process route to load along with any other settings that it needs to determine where to publish next.</p>
+
+</li>
+<li><p>$ARGS-&gt;{<b>cargo</b>} : The message data to process with this run. This must be a single string of data that may be encoded in any format that the consumers of the queues in the process route will understand. When the record gets published to the Start queue, the settings will be combined with the cargo to form the object&#39;s <b>msgData</b> which is JSON encoded before being added to the queue. This creates the message packet of data and settings that will guide the message processing to delivery. Cargo can be any formated string that the downstream consumers require including itself a JSON string.</p>
+
+</li>
+</ul>
+
+<h3 id="Optional-Arguments1">Optional Arguments</h3>
+
+<ul>
+
+<li><p>$ARGS-&gt;{<b>settings</b>} : Hash of key value pairs to use as initial settings for the start of publishing. Use this feature to add settings to the start that other ways of starting a queue processing flow may publish to the first queue. For example, Node authentication may load the first queue directly rather than calling the <b>publishStart</b> method. This option is mostly intended to aid testing.</p>
+
+</li>
+</ul>
+
+<h3 id="Return-Value1">Return Value</h3>
+
+<p><b>SITO::Return</b> object with the following methods defined:</p>
+
+<pre><code>    Get_error() : Fatal error message if any</code></pre>
+
+<p><b>_____________________________________________________________________________</b></p>
+
+<h2 id="setMessageData-ARGS---Set-Message-Data">setMessageData($ARGS) - Set Message Data</h2>
+
+<p>Set the message data packet owned by the current object after validating the minimum required fields - cargo and settings are included in the packet. This new data packet will then be used by subsequent method calls of this object including the <b>publishNext</b> method to convert to JSON format and store the packet to the appropriate exchange queue. Using this method to change message data rather than directly assigning the packet to the object will allow centralized preparation of the stored packet should it become necessary.</p>
+
+<h3 id="Mandatory-Arguments1">Mandatory Arguments</h3>
+
+<ul>
+
+<li><p><b>packet</b> : Packet of message data to assign the current object. Use this method to alter the message packet from a consumer callback routine or any other code that needs to modify the data during Queue Router processing.</p>
+
+</li>
+</ul>
+
+<h3 id="Return-Value2">Return Value</h3>
+
+<p><b>SITO::Return</b> object with the following methods defined:</p>
+
+<pre><code>    Get_error() : Fatal error message if any</code></pre>
+
+<p><b>_____________________________________________________________________________</b></p>
+
+<h2 id="publishNext-ARGS---Publish-Next-Class-in-Queue-Router-flow">publishNext($ARGS) - Publish Next Class in Queue Router flow</h2>
+
+<p>Publish to the next exchange class in the Queue Router process flow by comparing the config settings <b>process_route</b> of the current RouterCore object with the history of classes published so far. The route history is initiated by the <b>publishStart</b> method, and if there is no history, this method will return an out-of-sequence error. If the history is empty, the first class on the process route will be use as the publish target. A consumer may alter the predefined process route list by calling <b>setNextClass</b> to set the next class in the route before calling this method.</p>
+
+<h3 id="Optional-Arguments2">Optional Arguments</h3>
+
+<ul>
+
+<li><p>$ARGS-&gt;{<b>delay</b>} : Number of seconds to delay publishing to the next Class queue. Specifying this option will cause a SITO::MQDelay publish method call that will delay publishing to the next queue in the process route list until the given number of seconds have expired. Currently, only digits are allowed for the <b>delay</b> value, but this method can be modified to accept dates if a need arises that warrants additional development.</p>
+
+</li>
+</ul>
+
+<h3 id="Return-Value3">Return Value</h3>
+
+<p><b>SITO::Return</b> object with the following methods defined:</p>
+
+<pre><code>    Get_error() : Fatal error message if any</code></pre>
+
+<p><b>_____________________________________________________________________________</b></p>
+
+<h2 id="publishNotify-ARGS---Publish-to-Queue-Router-Class-queue">publishNotify($ARGS) - Publish to Queue Router Class queue</h2>
+
+<p>Publish the current message packet to the specified Notify Class with no regards to the current defined process route to initiate notifications to exchanges outside of the Queue Router controlled exchanges. The route key supplied with this method determines which queue of the Notify Class defined exchange receives the message. Route keys can be generated at run time as needed to support different notifications through the same exchange as determined by the consumer needing to send the notification.</p>
+
+<p>The initialization of the exchange, queue, and route key does NOT happen in this method so that process can be handled outside of the Queue Router system. The main objective of this feature is to provide more flexibility than what is available with the Exchange Class methods. This method also does not verify the existance or availability of the specified exchange. An error will be passed back from the AMPQ processing if the exchange does not exist or if the route key is not bound to the exchange.</p>
+
+<h3 id="Mandatory-Arguments2">Mandatory Arguments</h3>
+
+<ul>
+
+<li><p><b>class_name</b> : Name of the Notify Class to publish. The specified name must be defined as a <b>notify_class</b> type in the Config database or this method will return an error.</p>
+
+</li>
+<li><p>$ARGS-&gt;{<b>route_key</b>} : Name of the Route Key to use with the publish rather than the default queue name.</p>
+
+</li>
+</ul>
+
+<h3 id="Return-Value4">Return Value</h3>
+
+<p><b>SITO::Return</b> object with the following methods defined:</p>
+
+<pre><code>    Get_error() : Fatal error message if any</code></pre>
+
+<p><b>_____________________________________________________________________________</b></p>
+
+<h2 id="publishAbort-ARGS---Publish-to-the-Abort-Route">publishAbort($ARGS) - Publish to the Abort Route</h2>
+
+<p>Abort the Queue Router processing and schedule a retry if the given class is configured with a positive <b>retry_max</b> value and the retry count has not exceeded the maximum. If no retry is configured or if the count is beyond the retry maximum, modify the process route to proceed down the defined abort route. Use a default abort route if none is defined for the class.</p>
+
+<p>The Abort Route consists of zero or more exchange classes that finish the processing after an error has occurred with the normal process flow. These classes can be used to gracefully end processing, report status back to the caller, and update the current message Request database record with the error status.</p>
+
+<p>Abort Route exchange class modules use the same mechanism to continue processing as the normal Process Route classes - they call <b>publishNext</b> to continue to the next queue. The abort route ends when there are no more abort classes to publish. If no Abort Route is defined in the current work class Config settings, <b>publishAbort</b> will abruptly end the Queue Router processing with no request record status update. One must define an <b>abort_route</b> exchange class array in the work class configuration to avoid this ending.</p>
+
+<h3 id="Mandatory-Arguments3">Mandatory Arguments</h3>
+
+<ul>
+
+<li><p>$ARGS-&gt;{<b>class_name</b>} : Name of the exchange class to abort. This name is used with its Config definitions and the message data settings to determine when to schedule a retry. The class Config definitions also contain the <b>abort_route</b> setting that is used to replace the processing flow when a retry is not possible.</p>
+
+</li>
+</ul>
+
+<h3 id="Optional-Arguments3">Optional Arguments</h3>
+
+<ul>
+
+<li><p>$ARGS-&gt;{<b>sito_return</b>} : The SITO::Return object resulting from the error. This object will be added to the Message Settings, <b>sito_return</b> field with the following three fields: <b>error</b>, <b>error_descr</b> and <b>vals</b>, with the <b>vals</b> field being JSON encoded if it is anything other than a string.</p>
+
+</li>
+<li><p><b>- OR -</b> (instead of <b>sito_return</b>)</p>
+
+</li>
+<li><p>$ARGS-&gt;{<b>message_name</b>} : Name of the message prompt to use as text to send back to the customer (see sito_global.message). The settings must contain a <b>system_id</b> and <b>message_context</b> setting or the defaults of system_id=0 and message_context=queue_router will be used. If there is no message in the sito_global that matches the name, context, and system ID, no message will be sent to the customer, and the Abort Route classes may not report an error unless they allow for blank message text.</p>
+
+</li>
+<li><p><b>- OR -</b> (instead of <b>sito_return</b> or <b>mssage_name</b>)</p>
+
+</li>
+<li><p>$ARGS-&gt;{<b>message_text</b>} : Text of the message to send back to the customer to explain the processing error. Macros will be expanded using the current settings values as replacements if defined in specified text.</p>
+
+</li>
+<li><p>$ARGS-&gt;{<b>request_id</b>} : Use this for the <b>id</b> column of the request table rather than the one stored in the message settings <b>record_id</b> value. This allows a special abort from the StartRouter consumer even if the message packet has yet to be created as long as the unique record was generated.</p>
+
+</li>
+<li><p>$ARGS-&gt;{<b>request_status</b>} : Request status string to use when updating the status of the current message request record. If not specified, no status update will be made by <b>publishAbort</b>.</p>
+
+</li>
+<li><p>$ARGS-&gt;{<b>request_cols</b>} : Request record column values to use instead of any like value named in the input arguments. Use this argument to define column values such as <b>system_id</b>, <b>partner_id</b>, <b>request_mode</b> or any other optional sito_messaging.request columns.</p>
+
+</li>
+</ul>
+
+<h3 id="Return-Value5">Return Value</h3>
+
+<p><b>SITO::Return</b> object with the following methods defined:</p>
+
+<pre><code>    Get_error() : Fatal error message if any</code></pre>
+
+<p><b>_____________________________________________________________________________</b></p>
+
+<h2 id="setBranchClass-ARGS---Set-a-Branch-Class">setBranchClass($ARGS) - Set a Branch Class</h2>
+
+<p>Insert a class before the next class in the current process route, and set the inserted class up to run with the optionally supplied publish arguments. The next time <b>publishNext</b> is called, message data will be published to this new exchange queue, and processing will continue to follow the process route flow. This method provides a way to alter the process flow dynamically during run time so the down stream processing can be changed according to the desired business flow.</p>
+
+<p>For now, only Exchange Classes can be specified with <b>setBranchClass</b>. Work Class branches may be implemented at some future date if a business case is discovered that requires multiple Exchange Classes be combined to form a reusuable generic Work Class.</p>
+
+<h3 id="Mandatory-Arguments4">Mandatory Arguments</h3>
+
+<ul>
+
+<li><p>$ARGS-&gt;{<b>class_name</b>} : The name of the exchange type class of the desired branch. This name must exist in the SITO::Config database as a QueueRouter connection element for the current application environment.</p>
+
+</li>
+</ul>
+
+<h3 id="Optional-Arguments4">Optional Arguments</h3>
+
+<ul>
+
+<li><p>$ARGS-&gt;{<b>publish_args</b>} : The custom publishing arguments to use with named class. The value of this option is a hash of name/value pairs that are to be applied to the named class during the current message flow. These publish arguments remain associated with the class until the altered with another call to <b>setBranchClass</b> or until the message processing is finished. Default publish arguments are taken from the message settings and cargo when this option is not specified.</p>
+
+</li>
+</ul>
+
+<h3 id="Return-Value6">Return Value</h3>
+
+<p><b>SITO::Return</b> object with the following methods defined:</p>
+
+<pre><code>    Get_error() : Fatal error message if any</code></pre>
+
+<p><b>_____________________________________________________________________________</b></p>
+
+<h2 id="listExchangeClasses-ARGS---List-Queue-and-Exchange-Classes-with-settings">listExchangeClasses($ARGS) - List Queue and Exchange Classes with settings</h2>
+
+<p>Return a hash of all the exchange classes in the current Queue Router configuration database. Each class will have at least the following attribute values defined: exchange, queue, and consume_pm. Other attributes may be added later as necessary for Queue Router development.</p>
+
+<h3 id="Mandatory-Arguments5">Mandatory Arguments</h3>
+
+<ul>
+
+<li><p><b>None</b></p>
+
+</li>
+</ul>
+
+<h3 id="Return-Value7">Return Value</h3>
+
+<p><b>SITO::Return</b> object with the following methods defined:</p>
+
+<pre><code>    Get_error() : Fatal error message if any
+    Get_vals()  : Hash reference of the following attributes per class name:
+           { exchange =&gt; $exchangeName,
+             queue =&gt; $queueName,
+             consume_pm =&gt; $usePath,
+           }</code></pre>
+
+<p><b>_____________________________________________________________________________</b></p>
+
+<h2 id="getQueue-ARGS---Get-Queue-and-Exchange-names">getQueue($ARGS) - Get Queue and Exchange names</h2>
+
+<p>Return the queue and exchange names associated with the specified exchange class. The exchange and queue names are defined in the SITO::Config database of the QueueRouter connection elements that have a tag type of <b>exchange_class</b>, and this method will recognize only exchange type classes. All others types or classes not found in the database will return error.</p>
+
+<h3 id="Mandatory-Arguments6">Mandatory Arguments</h3>
+
+<ul>
+
+<li><p>$ARGS-&gt;{<b>class_name</b>} : The name of the exchange type class of the desired queue and exchange. This name must exist in the SITO::Config database as a QueueRouter connection element for the current application environment.</p>
+
+</li>
+</ul>
+
+<h3 id="Return-Value8">Return Value</h3>
+
+<p><b>SITO::Return</b> object with the following methods defined:</p>
+
+<pre><code>    Get_error() : Fatal error message if any
+    Get_vals()  : Hash reference with the following fields defined:
+           { class =&gt; $className,
+             queue =&gt; $queueName,
+             exchange =&gt; $exchangeName 
+             consume_pm =&gt; $pmFile 
+             consume_lib =&gt; $lib 
+             publish_args =&gt; $pArgs
+             cargo_key =&gt; $cKey
+           }</code></pre>
+
+<p><b>_____________________________________________________________________________</b></p>
+
+<h2 id="getNextClass-ARGS---Get-the-Next-Class-in-the-Process-List">getNextClass($ARGS) - Get the Next Class in the Process List</h2>
+
+<p>Get the next class to process in the current process route with regards to the current history. The object message data history will be evaluated to see where we are in the process route, and return the next class name in the route. If we are at the end of the process route, this method will return an empty hash with no error. This method will be mostly called from any publish method that needs to know where to publish next, but there may be other uses identified at a later time.</p>
+
+<h3 id="Optional-Arguments5">Optional Arguments</h3>
+
+<ul>
+
+<li><p><b>None</b></p>
+
+</li>
+<li><p></p>
+
+</li>
+</ul>
+
+<h3 id="Return-Value9">Return Value</h3>
+
+<p><b>SITO::Return</b> object with the following methods defined:</p>
+
+<pre><code>    Get_error() : Error message if any
+    Get_vals()  : Hash with the following fields defined:
+        class =&gt; $class    : Next class of the process route to process.
+        exchange =&gt; $exch  : Name of the exchange belonging to the class.
+        queue =&gt; $queue    : Name of the queue belonging to the class.
+        publish_args =&gt; $pArgs : Publish arguments specific to the class.
+        route_pos =&gt; $int  : Array position of this next class in the process
+                             route list (-1 = no next class found).</code></pre>
+
+<p><b>_____________________________________________________________________________</b></p>
+
+<h2 id="consumeClasses-ARGS---Consume-Records-from-Class-Queues">consumeClasses($ARGS) - Consume Records from Class Queues</h2>
+
+<p>Consume all records from one or more exchange class queues and wait for more. This method calls the AMQP::Consumer_poll method to consume records of the specified queues, and it will continue to consume until canceled with a Kill signal or until an error occurs with the Consumer_poll call. Errors don&#39;t generally happen with Consume_poll so calling this method results in a continuous daemon like process.</p>
+
+<p>To set up the consumption, this method normally loads the Perl module file named after the class found in the SITO/Queue/Lib directory, but any file can be named in the <b>exchange_class</b> definition in the config database. The PM file inherits from RouterCore, and it overwrites the <b>consumeCallback</b> method to provide a callback routine to Consumer_poll. It is in this callback that each queue record is processed either to completion, or to publish to yet another queue in the process route.</p>
+
+<h3 id="Mandatory-Arguments7">Mandatory Arguments</h3>
+
+<ul>
+
+<li><p>$ARGS-&gt;{<b>class_names</b>} : The array of exchange class names of the queues to consume. The named classes must have a like named Perl module file in the Queue/Lib directory, or some other name and location as defined by the <b>consume_pm</b> attribute of the class definition found in the config database to avoid error.</p>
+
+</li>
+<li><p></p>
+
+</li>
+</ul>
+
+<h3 id="Optional-Arguments6">Optional Arguments</h3>
+
+<ul>
+
+<li><p>$ARGS-&gt;{<b>max_consume</b>} : Maximum number of records to consume before halting queue consumption of any given class. This should only be used when running in Debug mode because the Consumer_poll process will be taken abrubtly off line when the consume count has been reached, and one must exit the calling program to clean up orphaned channels left behind.</p>
+
+</li>
+</ul>
+
+<h3 id="Return-Value10">Return Value</h3>
+
+<p><b>SITO::Return</b> object with the following methods defined:</p>
+
+<pre><code>    Get_error() : Error message if any</code></pre>
+
+<p><b>_____________________________________________________________________________</b></p>
+
+<h2 id="getMessageData-ARGS---Get-Message-Data">getMessageData($ARGS) - Get Message Data</h2>
+
+<p>Get the message data packet owned by the current <b>RouterCore</b> object. The data packet contains cargo and settings with key names that can be defined in the Config <b>cargo_key</b> and <b>settings_key</b> settings specific to the application environment. Default values for these keys are <b>cargo</b> and <b>settings</b> if not defined in the Config database. The packet returned is a COPY of the current object message packet.</p>
+
+<p>This helper method was implemented to aid testing and debug efforts. It can be used in conjunction with <b>setMessageData</b> for testing to change the message packet as needed, but one should not try to circumvent the normal process determined settings in production.</p>
+
+<h3 id="Optional-Arguments7">Optional Arguments</h3>
+
+<ul>
+
+<li><p><b>None</b></p>
+
+</li>
+</ul>
+
+<h3 id="Return-Value11">Return Value</h3>
+
+<p><b>SITO::Return</b> object with the following methods defined:</p>
+
+<pre><code>    Get_error() : Fatal error message if any
+    Get_vals()  : Hash reference of the message data packet</code></pre>
+
+<p><b>_____________________________________________________________________________</b></p>
+
+<h2 id="publishDBwRequest-ARGS---Publish-DB-Updates-with-Request-Transaction">publishDBwRequest($ARGS) - Publish DB Updates with Request Transaction</h2>
+
+<p>Publish one or more database updates, along with the request and request_tags updates, all wrapped in a transaction to provision all-or-nothing updates for the set of database records provided. If any of the publish attempts to the db_updates queue fail, roll back all updates. If publishing succeeds for all records, do the actual database updates from within a Mysql transaction.</p>
+
+<p>This method not only employs the SITO::MQDb transaction scheme to skip publishing on error, but it also specifies the <b>start_task</b> argument of MQDb::Publish_db so all records in the specified transaction are guaranteed to be published to the same queue regardless of the number of queues that MQDb controls. This feature will ensure that the transaction database updates will happen in FIFO order.</p>
+
+<h3 id="Mandatory-Arguments8">Mandatory Arguments</h3>
+
+<ul>
+
+<li><p>$ARGS-&gt;{<b>packet</b>} : The message packet to use when retrieving Settings to store in the Request tables. This argument is required so one can call it from places (eg., from a consumer) that may not have the internal message packet defined yet.</p>
+
+</li>
+<li><p></p>
+
+</li>
+</ul>
+
+<h3 id="Optional-Arguments8">Optional Arguments</h3>
+
+<ul>
+
+<li><p>$ARGS-&gt;{<b>records</b>} : Array reference of database records to add to the transaction. Each record must be a hash with the following fields defined: <b>db_name</b>, <b>dbmode</b>, <b>table</b>, <b>columns</b>, <b>values</b>, <b>where</b> (optional), and <b>macro</b> (optional). The MQDb::Publish_db <b>task_start</b> argument will be added to each of these arrays with the current time() value so as to ensure all updates of the transaction are sent to the same Database Updates queue.</p>
+
+</li>
+<li><p>$ARGS-&gt;{<b>expires</b>} : Number of days to set as the expiration time for the heavy weight request_tags table entries. Heavy weight tags include the following: _sito_settings, _sito_cargo, _sito_history, and _sito_status_detail. All of these tags will be removed from the database once they expire, but the rest of the Request tags will remain in the database.</p>
+
+</li>
+<li><p>$ARGS-&gt;{<b>caller</b>} : Name of the caller routine to append to the record ID when the transaction ID is created. The transaction ID is used when defining the MQDb update transaction, and none is specified, a special suffix of <b>unknown_caller</b> will be combined with the Request record ID to form a unique ID for the transaction.</p>
+
+</li>
+<li><p>$ARGS-&gt;{<b>skip_request</b>} : Skip the automatic updates of the <b>request</b> and <b>request_tags</b> database tables. Use this option when you have multiple database updates to do, and you want those updates to occur within a transaction, but yet no Request database updates are desired.</p>
+
+</li>
+<li><p>$ARGS-&gt;{<b>transaction_id</b>} : Use this value to uniquely identify the database transaction rather than the normal <b>caller</b> value plus record_id. Use this option in conjunction with <b>skip_request</b> when there in no record_id value in the packet. Because this ID is what designates the database transaction, uniqueness only has to be for the life of database queue entry.</p>
+
+</li>
+</ul>
+
+<h3 id="Return-Value12">Return Value</h3>
+
+<p><b>SITO::Return</b> object with the following methods defined:</p>
+
+<pre><code>    Get_error() : Error message if any</code></pre>
+
+<p><b>_____________________________________________________________________________</b></p>
+
+<h2 id="consumeCallback-ARGS---Consume-Callback-Stub">consumeCallback($ARGS) - Consume Callback Stub</h2>
+
+<p>This is the callback stub method that needs to be overwritten by the exchange class specific child object Perl module. The stub always prints a message to the log and returns error so that we can tell when b&lt;consumeClass&gt; is not working correctly.</p>
+
+<h3 id="Optional-Arguments9">Optional Arguments</h3>
+
+<ul>
+
+<li><p><b>None</b></p>
+
+</li>
+<li><p></p>
+
+</li>
+</ul>
+
+<h3 id="Return-Value13">Return Value</h3>
+
+<p><b>SITO::Return</b> object with the following methods defined:</p>
+
+<pre><code>    Get_error() : Error message if any</code></pre>
+
+<h1 id="DEPENDENCIES">DEPENDENCIES</h1>
+
+<pre><code>    SITO::Config
+    SITO::AMPQ</code></pre>
+
+<h1 id="AUTHOR">AUTHOR</h1>
+
+<p>David Runyan, Single Touch Systems Inc.</p>
+
+<h1 id="VERSION">VERSION</h1>
+
+<p>Version 1.0</p>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+
+</body>
+
+</html>
+
+
